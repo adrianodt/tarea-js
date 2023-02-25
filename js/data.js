@@ -174,7 +174,7 @@ var data = {
 
 
 
-  let date1 = new Date(data.currentDate);
+/*   let date1 = new Date(data.currentDate);
   console.log(data.currentDate);
 
 
@@ -188,3 +188,4 @@ var data = {
   }
 
 
+ */
