@@ -31,7 +31,7 @@ for (let i = 0; i < data.events.length; i++) {
   let precioCard = document.createElement("h5");
   precioCard.className = "h5-card";
   let precio = data.events[i].price;
-  precioCard.textContent = "Precio: $" + precio;
+  precioCard.textContent = "Price: $" + precio;
   div.appendChild(precioCard);
 
   //crea el boton
