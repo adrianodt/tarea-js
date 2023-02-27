@@ -38,6 +38,9 @@ for (let i = 0; i < data.events.length; i++) {
   let boton = document.createElement("button");
   boton.className = "boton-card";
   boton.innerHTML = "Ver más";
+  boton.addEventListener("click", function() {
+    window.location.href = "./details.html";
+  });
   div.appendChild(boton);
 
   containerCard.appendChild(div);
