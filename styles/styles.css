@@ -50,6 +50,22 @@ nav > a:hover {
   margin-top: 20px;
 }
 
+#container-filtros {
+  display:flex;
+}
+
+#container-filtros form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container-filtros label {
+  margin-right: 10px;
+  margin-left: 4px;
+
+}
+
 .container-card {
   display: flex;
   justify-content: center;

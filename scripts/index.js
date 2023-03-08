@@ -38,7 +38,7 @@ for (let i = 0; i < data.events.length; i++) {
   let boton = document.createElement("button");
   boton.className = "boton-card";
   boton.innerHTML = "Ver más";
-  boton.addEventListener("click", function() {
+  boton.addEventListener("click", function () {
     window.location.href = "./details.html";
   });
   div.appendChild(boton);
@@ -47,3 +47,41 @@ for (let i = 0; i < data.events.length; i++) {
 
   console.log(div);
 }
+
+let categoriaSinRepe = [];
+
+for (let i = 0; i < data.events.length; i++) {
+  if (!categoriaSinRepe.includes(data.events[i].category)) {
+    categoriaSinRepe.push(data.events[i].category);
+  }
+}
+
+console.log(categoriaSinRepe);
+
+let containerFiltros = document.getElementById("container-filtros");
+
+// funcion q crea los checkbox
+
+function crearListaFiltros(arr, contenedor) {
+  let listaFiltros = document.querySelector(contenedor);
+
+  let formulario = document.createElement("form");
+
+  arr.forEach((item) => {
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = "elementos";
+    checkbox.value = item;
+    console.log(checkbox.value);
+
+    let label = document.createElement("label");
+    label.htmlFor = checkbox.id;
+    label.appendChild(document.createTextNode(item));
+
+    formulario.appendChild(checkbox);
+    formulario.appendChild(label);
+  });
+  containerFiltros.appendChild(formulario);
+}
+
+crearListaFiltros(categoriaSinRepe, "container-filtros");
