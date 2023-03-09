@@ -182,10 +182,83 @@ var data = {
 };
 
 
-// recorrer array de data.events *****
-// tomar la categoria / loguearla *****
-// recorrer de nuevo ******
-// comparar la categoria que no exista y agregarla ******
-//crear los checkbox con esas categorias
+// crea array de categorias sin repetir
 
-// crear los cards filtrados por categorias
+let categoriaSinRepe = [];
+
+for (let i = 0; i < data.events.length; i++) {
+  if (!categoriaSinRepe.includes(data.events[i].category)) {
+    categoriaSinRepe.push(data.events[i].category);
+  }
+}
+
+
+
+// funcion crea lista de checkbox
+
+function crearCheck(arr, contenedor) {
+  let listaFiltros = document.querySelector(contenedor);
+
+  arr.forEach((item) => {
+    let label = document.createElement("label");
+    let checkbox = document.createElement("input");
+    label.textContent = item;
+    checkbox.type = "checkbox";
+    checkbox.name = "elementos";
+    checkbox.value = item;
+  
+    label.appendChild(checkbox);
+    listaFiltros.appendChild(label);
+  });
+}
+
+crearCheck(categoriaSinRepe, "#form-busqueda");
+
+
+
+// funcion que crea las cards
+
+function crearCard(array, contenedor) {
+  let contenedorPadre = document.querySelector(contenedor);
+
+  console.log(contenedorPadre);
+
+  console.log(array);
+
+  array.forEach((evento) => {
+    console.log(evento);
+    let div = document.createElement("div");
+    div.className = "card";
+
+    let imagen = document.createElement("img");
+    imagen.className = "imagen-card";
+    let imagenSrc = evento.image;
+    imagen.src = imagenSrc;
+    div.appendChild(imagen);
+
+    let tituloCard = document.createElement("h3");
+    tituloCard.className = "h3-card";
+    tituloCard.textContent = evento.name;
+    div.appendChild(tituloCard);
+
+    let descripcionCard = document.createElement("p");
+    descripcionCard.className = "p-card";
+    descripcionCard.textContent = evento.description;
+    div.appendChild(descripcionCard);
+
+    let precioCard = document.createElement("h5");
+    precioCard.className = "h5-card";
+    precioCard.textContent = "Price: $" + evento.price;
+    div.appendChild(precioCard);
+
+    let boton = document.createElement("button");
+  boton.className = "boton-card";
+  boton.innerHTML = "Ver más";
+  boton.addEventListener("click", function () {
+    window.location.href = "./details.html";
+  });
+  div.appendChild(boton);
+
+  contenedorPadre.appendChild(div);
+  });
+}
