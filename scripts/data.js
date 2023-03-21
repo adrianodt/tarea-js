@@ -202,6 +202,7 @@ function crearCheck(arr, contenedor) {
     label.setAttribute = ("for", item);
     label.innerHTML = item;
     checkbox.type = "checkbox";
+    checkbox.className = "check";
     checkbox.name = item;
     checkbox.value = item;
 
@@ -214,98 +215,3 @@ crearCheck(categoriaSinRepe, "#form-busqueda");
 
 
 
-
-//////////////////////////////////////////////////////////////////////////////
-
-// funcion que crea las cards
-
-let eventos = data.events;
-
-mostrarEventos(eventos);
-
-function crearCard (evento) {
-  return `
-    <div class="card">
-      <img class="imagen-card" src="${evento.image}" alt="${evento.titulo}">
-      <h3 class="he-card">${evento.name}</h3>
-      <p class="p-card">${evento.description}</p>
-      <h5 class="precio-card">Precio: $${evento.price}</h5>
-      <button class="boton-card" href="./details.html">Ver más...</button>
-    </div>
-  `; 
-}
-
-function mostrarEventos(eventos, checkboxes) {
-  let contenedor = document.querySelector('.container-cards');
-  contenedor.innerHTML = ''; // Vaciar el contenedor antes de agregar nuevas tarjetas
-  for (let evento of eventos) {
-    // Si ningún checkbox está seleccionado o el valor del checkbox coincide con el atributo del evento
-    if (!checkboxes || checkboxes.has(evento.category)) {
-      contenedor.innerHTML += crearCard(evento);
-    }
-  }
-}
-
-let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-for (let checkbox of checkboxes) {
-  checkbox.addEventListener('change', function() {
-    let seleccionados = new Set(); // Conjunto de valores de checkbox seleccionados
-    for (let checkbox of checkboxes) {
-      if (checkbox.checked) {
-        seleccionados.add(checkbox.value);
-      }
-    }
-    
-    mostrarEventos(eventos, seleccionados);
-
-    console.log(seleccionados);
-    
-  });
-}
-
-/* function crearCard(array, contenedor) {
-  let contenedorPadre = document.querySelector(contenedor);
-
-  // console.log(contenedorPadre);
-
-  // console.log(array);
-
-  array.forEach((evento) => {
-    // console.log(evento);
-    let div = document.createElement("div");
-    div.className = "card";
-    contenedorPadre.appendChild(div);
-
-    let imagen = document.createElement("img");
-    imagen.className = "imagen-card";
-    let imagenSrc = evento.image;
-    imagen.src = imagenSrc;
-    div.appendChild(imagen);
-
-    let tituloCard = document.createElement("h3");
-    tituloCard.className = "h3-card";
-    tituloCard.textContent = evento.name;
-    div.appendChild(tituloCard);
-
-    let descripcionCard = document.createElement("p");
-    descripcionCard.className = "p-card";
-    descripcionCard.textContent = evento.description;
-    div.appendChild(descripcionCard);
-
-    let precioCard = document.createElement("h5");
-    precioCard.className = "h5-card";
-    precioCard.textContent = "Price: $" + evento.price;
-    div.appendChild(precioCard);
-
-    let boton = document.createElement("button");
-    boton.className = "boton-card";
-    boton.innerHTML = "Ver más";
-    boton.addEventListener("click", function () {
-      window.location.href = "./details.html";
-    });
-    div.appendChild(boton);
-
-    
-  });
-}
- */

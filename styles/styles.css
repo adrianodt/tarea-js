@@ -124,6 +124,10 @@ nav > a:hover {
   color: antiquewhite;
 }
 
+.container-cards button:hover {
+  cursor: pointer;
+}
+
 .contacto {
   display: flex;
   margin: 30px;
