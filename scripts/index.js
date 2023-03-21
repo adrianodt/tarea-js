@@ -6,7 +6,7 @@ let eventos = data.events;
       <img class="imagen-card" src="${evento.image}" alt="${evento.titulo}">
       <h3 class="h3-card">${evento.name}</h3>
       <p class="p-card">${evento.description}</p>
-      <h5 class="precio-card">Precio: $${evento.price}</h5>
+      <h5 class="precio-card">Price: $${evento.price}</h5>
       <button class="boton-card" onclick="location.href='./details.html'">Info</button>
     </div>
   `;
